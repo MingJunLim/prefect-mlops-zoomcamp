@@ -11,7 +11,10 @@ import xgboost as xgb
 from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
+from prefect_email import EmailServerCredentials
 
+
+email_credentials_block = EmailServerCredentials.load("email-server-credentials")
 
 
 @task(retries=3, retry_delay_seconds=2)
